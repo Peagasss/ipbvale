@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventos",
+  "info": {
+    "singularName": "evento",
+    "pluralName": "eventos",
+    "displayName": "Evento"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "data": {
+      "type": "date"
+    },
+    "recorrencia": {
+      "type": "enumeration",
+      "enum": [
+        "Nao se repete",
+        "Semanalmente"
+      ]
+    },
+    "dia_da_semana": {
+      "type": "enumeration",
+      "enum": [
+        "Domingo",
+        "Segunda-feira",
+        "Terca-feira",
+        "Quarta-feira",
+        "Quinta-feira",
+        "Sexta-feira",
+        "Sabado"
+      ]
+    },
+    "local": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "text"
+    }
+  }
+}
