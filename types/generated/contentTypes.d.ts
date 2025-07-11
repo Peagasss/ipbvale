@@ -569,6 +569,38 @@ export interface ApiNoticiaNoticia extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRecursoRecurso extends Struct.CollectionTypeSchema {
+  collectionName: 'recursos';
+  info: {
+    displayName: 'Recurso';
+    pluralName: 'recursos';
+    singularName: 'recurso';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    arquivo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    autor: Schema.Attribute.String;
+    capa: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data_publicacao: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::recurso.recurso'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1084,6 +1116,7 @@ declare module '@strapi/strapi' {
       'api::membros-conselho.membros-conselho': ApiMembrosConselhoMembrosConselho;
       'api::midia.midia': ApiMidiaMidia;
       'api::noticia.noticia': ApiNoticiaNoticia;
+      'api::recurso.recurso': ApiRecursoRecurso;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
